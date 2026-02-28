@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>광명시 발달장애인 방과후 활동서비스 재지정 심사 논란 — 심층 분석 보고서</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+/* =============================================
+   CSS CUSTOM PROPERTIES
+   ============================================= */
+:root {
+  --color-bg: #fafaf8;
+  --color-bg-alt: #f2f2ee;
+  --color-bg-callout: #f0f0ec;
+  --color-bg-critical: #fef2f2;
+  --color-surface: #ffffff;
+  --color-primary: #1a2332;
+  --color-primary-light: #253347;
+  --color-accent: #1a5f6b;
+  --color-accent-hover: #14505b;
+  --color-muted: #5a6475;
+  --color-rule: #d8d6d0;
+  --color-rule-strong: #b8b4ac;
+  --color-critical: #b91c1c;
+  --color-critical-bg: #fef2f2;
+  --color-chapter-num: #dce8ec;
+  --color-table-header: #1a2332;
+  --color-table-alt: #f5f5f2;
+  --color-table-border: #d8d6d0;
+  --color-progress: #1a5f6b;
+  --color-footnote: #6b7280;
+
+  --font-serif: 'Noto Serif KR', 'Batang', Georgia, serif;
+  --font-sans: 'Noto Sans KR', 'AppleGothic', 'Malgun Gothic', sans-serif;
+
+  --size-base: 17.5px;
+  --lh-body: 1.92;
+  --lh-heading: 1.35;
+  --max-content: 760px;
+  --spacing-section: 4rem;
+  --spacing-chapter: 5.5rem;
+}
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: var(--size-base); }
+
+body {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  color: var(--color-primary);
+  background: var(--color-bg);
+  line-height: var(--lh-body);
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* =============================================
+   READING PROGRESS BAR
+   ============================================= */
+#progress-bar {
+  position: fixed;
+  top: 0; left: 0;
+  width: 0%;
+  height: 3px;
+  background: var(--color-progress);
+  z-index: 9999;
+  transition: width 0.1s linear;
+}
+
+/* =============================================
+   SKIP NAV
+   ============================================= */
+.skip-nav {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  z-index: 10000;
+}
+.skip-nav:focus { top: 0; }
+
+/* =============================================
+   COVER / HERO
+   ============================================= */
+.cover {
+  background: var(--color-primary);
+  color: #ffffff;
+  padding: 5rem 2rem 4.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    linear-gradient(135deg, rgba(26,95,107,0.18) 0%, transparent 60%),
+    linear-gradient(225deg, rgba(255,255,255,0.025) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.cover::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(26,95,107,0.6), transparent);
+}
+
+.cover-inner {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.cover-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 0.35rem 0.75rem;
+  margin-bottom: 2.5rem;
+  border-radius: 2px;
+}
+
+.cover-label::before {
+  content: '';
+  width: 16px; height: 1px;
+  background: var(--color-accent);
+  display: inline-block;
+}
+
+.cover-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.45rem, 3.5vw, 2.05rem);
+  font-weight: 600;
+  line-height: 1.5;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+.cover-title em {
+  font-style: normal;
+  color: rgba(26,95,107,0.9);
+  background: rgba(26,95,107,0.12);
+  padding: 0 0.15em;
+}
+
+.cover-divider {
+  width: 48px;
+  height: 2px;
+  background: var(--color-accent);
+  margin: 1.75rem 0;
+}
+
+.cover-subtitle {
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.7;
+  max-width: 600px;
+}
+
+.cover-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255,255,255,0.12);
+}
+
+.cover-meta-item {
+  font-family: var(--font-sans);
+}
+
+.cover-meta-label {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.cover-meta-value {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.8);
+}
+
+/* =============================================
+   TABLE OF CONTENTS
+   ============================================= */
+.toc-wrapper {
+  background: var(--color-surface);
+  border-top: 3px solid var(--color-accent);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.toc-inner {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: 2.5rem 2rem;
+}
+
+.toc-header {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.toc-header::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-rule);
+}
+
+.toc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.25rem 2.5rem;
+}
+
+.toc-item {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.toc-item:hover { border-color: var(--color-rule); }
+
+.toc-num {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  min-width: 1.8rem;
+  flex-shrink: 0;
+}
+
+.toc-link {
+  font-family: var(--font-sans);
+  font-size: 0.83rem;
+  font-weight: 400;
+  color: var(--color-primary-light);
+  text-decoration: none;
+  line-height: 1.5;
+  transition: color 0.2s;
+}
+
+.toc-link:hover { color: var(--color-accent); }
+
+.toc-item.sub { padding-left: 0.5rem; }
+.toc-item.sub .toc-link { font-weight: 300; color: var(--color-muted); font-size: 0.78rem; }
+
+/* =============================================
+   MAIN CONTENT LAYOUT
+   ============================================= */
+.content-wrapper {
+  max-width: var(--max-content);
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+}
+
+/* =============================================
+   SECTION: INTRO
+   ============================================= */
+.intro-section {
+  margin-bottom: var(--spacing-chapter);
+  padding-bottom: var(--spacing-section);
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.section-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.section-eyebrow::before {
+  content: '';
+  width: 20px; height: 1.5px;
+  background: var(--color-accent);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.intro-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.2rem, 2.5vw, 1.45rem);
+  font-weight: 600;
+  line-height: 1.5;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+/* =============================================
+   CHAPTER STRUCTURE
+   ============================================= */
+.chapter {
+  margin-bottom: var(--spacing-chapter);
+  padding-bottom: var(--spacing-section);
+  border-bottom: 1px solid var(--color-rule);
+  position: relative;
+}
+
+.chapter:last-child { border-bottom: none; }
+
+.chapter-header {
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+.chapter-num-display {
+  font-family: var(--font-sans);
+  font-size: clamp(4rem, 10vw, 6.5rem);
+  font-weight: 800;
+  color: var(--color-chapter-num);
+  line-height: 1;
+  position: absolute;
+  top: -1.5rem;
+  right: -0.5rem;
+  pointer-events: none;
+  user-select: none;
+  letter-spacing: -0.03em;
+}
+
+.chapter-label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.chapter-label::before {
+  content: '';
+  width: 20px; height: 1.5px;
+  background: var(--color-accent);
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.chapter-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.15rem, 2.5vw, 1.4rem);
+  font-weight: 600;
+  line-height: var(--lh-heading);
+  color: var(--color-primary);
+  padding-bottom: 1.25rem;
+  border-bottom: 2px solid var(--color-primary);
+  position: relative;
+  z-index: 1;
+}
+
+/* =============================================
+   SUBSECTION
+   ============================================= */
+.subsection {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.subsection-title {
+  font-family: var(--font-sans);
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 1.25rem;
+  padding: 0.65rem 0 0.65rem 1.1rem;
+  border-left: 3px solid var(--color-accent);
+  line-height: 1.45;
+  background: linear-gradient(to right, rgba(26,95,107,0.04), transparent);
+}
+
+/* =============================================
+   BODY TEXT
+   ============================================= */
+p {
+  margin-bottom: 1.4rem;
+  color: var(--color-primary);
+}
+
+p:last-child { margin-bottom: 0; }
+
+/* Footnote superscripts */
+sup {
+  font-family: var(--font-sans);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  vertical-align: super;
+  line-height: 0;
+  margin-left: 1px;
+}
+
+/* =============================================
+   CALLOUT / BLOCKQUOTE
+   ============================================= */
+.callout {
+  background: var(--color-bg-callout);
+  border-left: 4px solid var(--color-primary);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 4px 4px 0;
+}
+
+.callout p {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.85;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.callout cite {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--color-muted);
+  margin-top: 0.75rem;
+  font-style: normal;
+  letter-spacing: 0.03em;
+}
+
+.callout-critical {
+  background: var(--color-critical-bg);
+  border-left-color: var(--color-critical);
+}
+
+.callout-critical p { color: var(--color-critical); }
+
+/* =============================================
+   HIGHLIGHT / EMPHASIS BOX
+   ============================================= */
+.highlight-box {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule-strong);
+  border-top: 3px solid var(--color-accent);
+  padding: 1.5rem 1.75rem;
+  margin: 2rem 0;
+  border-radius: 0 0 4px 4px;
+}
+
+.highlight-box-label {
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 0.65rem;
+}
+
+.highlight-box p {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  line-height: 1.75;
+  color: var(--color-primary-light);
+  margin: 0;
+}
+
+/* =============================================
+   TABLES
+   ============================================= */
+.table-wrapper {
+  margin: 2.25rem 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--color-table-border);
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(26,35,50,0.06);
+}
+
+.table-caption {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  padding: 0.85rem 1.1rem 0;
+  border-bottom: 0;
+  display: block;
+  background: var(--color-bg-callout);
+  border-radius: 6px 6px 0 0;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--font-sans);
+  font-size: 0.835rem;
+  line-height: 1.6;
+}
+
+thead th {
+  background: var(--color-table-header);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.03em;
+  padding: 0.85rem 1.1rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+tbody tr { transition: background 0.15s; }
+tbody tr:nth-child(even) { background: var(--color-table-alt); }
+tbody tr:hover { background: rgba(26,95,107,0.06); }
+
+tbody td {
+  padding: 0.85rem 1.1rem;
+  vertical-align: top;
+  border-bottom: 1px solid var(--color-table-border);
+  color: var(--color-primary);
+}
+
+tbody tr:last-child td { border-bottom: none; }
+
+tbody td:first-child {
+  font-weight: 600;
+  color: var(--color-primary);
+  white-space: nowrap;
+}
+
+/* =============================================
+   CONCLUSION / PROPOSALS
+   ============================================= */
+.conclusion-section {
+  margin-top: var(--spacing-chapter);
+}
+
+.conclusion-intro {
+  font-family: var(--font-serif);
+  font-size: 1.02rem;
+  line-height: 1.95;
+  color: var(--color-primary);
+  margin-bottom: 3rem;
+  padding: 2rem 2rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule);
+  border-left: 4px solid var(--color-primary);
+  border-radius: 0 4px 4px 0;
+}
+
+.proposals-label {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.proposals-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-rule);
+}
+
+.proposals-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.proposal-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-rule);
+  border-top: 3px solid var(--color-accent);
+  padding: 1.75rem 1.75rem 1.75rem 1.5rem;
+  border-radius: 0 0 6px 6px;
+  position: relative;
+  transition: box-shadow 0.25s, border-top-color 0.25s;
+}
+
+.proposal-card:hover {
+  box-shadow: 0 4px 20px rgba(26,35,50,0.1);
+  border-top-color: var(--color-primary);
+}
+
+.proposal-num {
+  font-family: var(--font-sans);
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--color-chapter-num);
+  line-height: 1;
+  margin-bottom: 0.85rem;
+}
+
+.proposal-title {
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-rule);
+}
+
+.proposal-body {
+  font-family: var(--font-sans);
+  font-size: 0.815rem;
+  line-height: 1.72;
+  color: var(--color-muted);
+}
+
+/* =============================================
+   CLOSING STATEMENT
+   ============================================= */
+.closing-statement {
+  margin-top: 3rem;
+  padding: 2.25rem 2.25rem;
+  background: var(--color-primary);
+  color: #ffffff;
+  border-radius: 6px;
+  position: relative;
+  overflow: hidden;
+}
+
+.closing-statement::before {
+  content: '"';
+  position: absolute;
+  top: -1.5rem;
+  left: 1rem;
+  font-family: var(--font-serif);
+  font-size: 8rem;
+  color: rgba(26,95,107,0.3);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.closing-statement p {
+  font-family: var(--font-serif);
+  font-size: 0.97rem;
+  line-height: 1.95;
+  color: rgba(255,255,255,0.88);
+  position: relative;
+  z-index: 1;
+  margin: 0;
+}
+
+/* =============================================
+   CHAPTER DIVIDER
+   ============================================= */
+.chapter-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 4rem 0;
+}
+
+.chapter-divider::before,
+.chapter-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--color-rule);
+}
+
+.chapter-divider-icon {
+  width: 8px; height: 8px;
+  background: var(--color-accent);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* =============================================
+   FOOTNOTE AREA
+   ============================================= */
+.footnotes {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-rule);
+}
+
+.footnotes-title {
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 1rem;
+}
+
+.footnotes p {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  color: var(--color-footnote);
+  line-height: 1.7;
+  margin-bottom: 0.4rem;
+}
+
+sup a {
+  color: var(--color-accent);
+  text-decoration: none;
+  font-weight: 600;
+  padding: 0 1px;
+  border-bottom: 1px dotted var(--color-accent);
+  transition: color 0.2s, border-color 0.2s;
+}
+sup a:hover {
+  color: var(--color-crimson, #b91c1c);
+  border-color: var(--color-crimson, #b91c1c);
+}
+.footnotes p:target {
+  background: rgba(26,95,107,0.08);
+  border-left: 3px solid var(--color-accent);
+  padding-left: 0.6rem;
+  margin-left: -0.6rem;
+  border-radius: 2px;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.site-footer {
+  background: var(--color-primary);
+  color: rgba(255,255,255,0.45);
+  text-align: center;
+  padding: 2rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+/* =============================================
+   UTILITY CLASSES
+   ============================================= */
+.text-critical {
+  color: var(--color-critical);
+  font-weight: 600;
+}
+
+.text-muted {
+  color: var(--color-muted);
+}
+
+.mb-0 { margin-bottom: 0; }
+
+/* =============================================
+   RESPONSIVE — MOBILE
+   ============================================= */
+@media (max-width: 700px) {
+  :root { --size-base: 16px; }
+
+  .cover { padding: 3.5rem 1.25rem 3rem; }
+  .cover-meta { gap: 1rem 1.5rem; }
+
+  .toc-grid { grid-template-columns: 1fr; gap: 0; }
+  .toc-inner { padding: 2rem 1.25rem; }
+
+  .content-wrapper { padding: 3rem 1.25rem 4rem; }
+
+  .chapter-num-display {
+    font-size: 4rem;
+    top: -1rem;
+    right: 0;
+  }
+
+  .proposals-grid { grid-template-columns: 1fr; }
+
+  .table-wrapper { font-size: 0.78rem; }
+  tbody td:first-child { white-space: normal; }
+}
+
+/* =============================================
+   PRINT STYLES
+   ============================================= */
+@media print {
+  @page {
+    margin: 20mm 18mm;
+    size: A4;
+  }
+
+  #progress-bar { display: none; }
+
+  .cover {
+    background: #1a2332 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    padding: 3rem 2rem;
+  }
+
+  .toc-wrapper,
+  .toc-inner { break-inside: avoid; }
+
+  .chapter { break-before: page; }
+
+  .chapter-header,
+  .subsection-title,
+  .callout,
+  .highlight-box,
+  .table-wrapper,
+  .proposal-card { break-inside: avoid; }
+
+  .proposal-card,
+  .callout,
+  .highlight-box {
+    border: 1px solid #ccc !important;
+    box-shadow: none !important;
+  }
+
+  .closing-statement {
+    background: #1a2332 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .toc-link { color: #1a2332 !important; }
+
+  thead th {
+    background: #1a2332 !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
+</style>
+</head>
+<body>
+
+<a href="#main-content" class="skip-nav">본문 바로가기</a>
+<div id="progress-bar" role="progressbar" aria-label="읽기 진행도"></div>
+
+<!-- =============================================
+     COVER
+     ============================================= -->
+<header class="cover" role="banner">
+  <div class="cover-inner">
+    <div class="cover-label">심층 분석 보고서 &nbsp;|&nbsp; Policy Analysis Report</div>
+
+    <h1 class="cover-title">
+      광명시 발달장애인 방과후 활동서비스<br>
+      재지정 심사 논란과 지역사회 공공복지행정의<br>
+      구조적 한계 및 정책적 함의에 관한<br>
+      <em>심층 분석 보고서</em>
+    </h1>
+
+    <div class="cover-divider"></div>
+
+    <p class="cover-subtitle">
+      절차적 공정성 결여, 이해충돌 방조, 행정 투명성 훼손, 그리고 지역 카르텔 의혹 —<br>
+      6명 중증 발달장애 청소년의 돌봄 위기를 둘러싼 지방복지행정의 구조적 병리 진단
+    </p>
+
+    <div class="cover-meta">
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">발행일</span>
+        <span class="cover-meta-value">2026년 2월</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">분석 대상</span>
+        <span class="cover-meta-value">광명시 마음드림심리상담센터 재지정 심사 사태</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">문서 유형</span>
+        <span class="cover-meta-value">복지행정 정책 분석 보고서</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">관련 법령</span>
+        <span class="cover-meta-value">발달장애인 권리보장 및 지원에 관한 법률 / 정보공개법</span>
+      </div>
+      <div class="cover-meta-item">
+        <span class="cover-meta-label">작성자</span>
+        <span class="cover-meta-value">경인블루저널</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- =============================================
+     TABLE OF CONTENTS
+     ============================================= -->
+<nav class="toc-wrapper" aria-label="목차">
+  <div class="toc-inner">
+    <div class="toc-header">목 차 — Contents</div>
+    <div class="toc-grid">
+      <div class="toc-item">
+        <span class="toc-num">서론</span>
+        <a href="#intro" class="toc-link">현대 복지국가의 지역사회 전달체계 위기와 공정성 논란의 대두</a>
+      </div>
+      <div class="toc-item">
+        <span class="toc-num">제3장</span>
+        <a href="#chapter3" class="toc-link">이해충돌 방지 기제의 완벽한 작동 실패와 지역 카르텔의 그림자</a>
+      </div>
+      <div class="toc-item sub">
+        <span class="toc-num"></span>
+        <a href="#chapter1" class="toc-link">— 정책적 배경 및 지정 제도의 이해</a>
+      </div>
+      <div class="toc-item sub">
+        <span class="toc-num"></span>
+        <a href="#chapter3-1" class="toc-link">— 좁은 해석으로 일관한 이해충돌의 묵인</a>
+      </div>
+      <div class="toc-item">
+        <span class="toc-num">제1장</span>
+        <a href="#chapter1" class="toc-link">정책적 배경 및 발달장애인 방과후 활동서비스 지정 제도의 이해</a>
+      </div>
+      <div class="toc-item sub">
+        <span class="toc-num"></span>
+        <a href="#chapter3-2" class="toc-link">— '그날의 분위기'와 지역 카르텔 의혹</a>
+      </div>
+      <div class="toc-item sub">
+        <span class="toc-num"></span>
+        <a href="#chapter1-1" class="toc-link">— 보건복지부 지침에 따른 지정 및 평가 기준의 구조</a>
+      </div>
+      <div class="toc-item">
+        <span class="toc-num">제4장</span>
+        <a href="#chapter4" class="toc-link">서비스 단절이 발달장애인 당사자와 가족 삶에 미치는 파괴적 파급 효과</a>
+      </div>
+      <div class="toc-item">
+        <span class="toc-num">제2장</span>
+        <a href="#chapter2" class="toc-link">광명시 재지정 심사 과정의 절차적 흠결과 형식주의적 평가의 문제점</a>
+      </div>
+      <div class="toc-item">
+        <span class="toc-num">제5장</span>
+        <a href="#chapter5" class="toc-link">지자체 단위 복지행정 시스템의 구조적 취약성과 권력 남용 실태</a>
+      </div>
+      <div class="toc-item sub">
+        <span class="toc-num"></span>
+        <a href="#chapter2-1" class="toc-link">— 목표의 대치(Goal Displacement) 현상</a>
+      </div>
+      <div class="toc-item">
+        <span class="toc-num">결론</span>
+        <a href="#conclusion" class="toc-link">결론 및 실효적 제도 개선 방안</a>
+      </div>
+      <div class="toc-item sub">
+        <span class="toc-num"></span>
+        <a href="#chapter2-2" class="toc-link">— 정보 비공개 처분의 모순과 행정 투명성의 실종</a>
+      </div>
+      <div class="toc-item">
+        <span class="toc-num"></span>
+        <a href="#footnotes" class="toc-link" style="color:var(--color-muted); font-size:0.76rem;">주석 및 참고</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- =============================================
+     MAIN CONTENT
+     ============================================= -->
+<main id="main-content" class="content-wrapper">
+
+  <!-- INTRO -->
+  <section id="intro" class="intro-section">
+    <div class="section-eyebrow">서론</div>
+    <h2 class="intro-title">현대 복지국가의 지역사회 전달체계 위기와 공정성 논란의 대두</h2>
+
+    <p>현대 복지국가에서 공공서비스의 민간 위탁 및 지정 제도는 행정의 효율성과 전문성을 제고함과 동시에 지역사회 내 다양한 민간 자원을 활용하기 위한 핵심적인 정책 기제로 작동하고 있다. 특히 발달장애인과 같은 고도의 취약계층을 대상으로 하는 돌봄, 주간활동, 그리고 방과후 활동서비스는 단순한 행정적 수혜를 넘어 당사자의 생존권 및 지역사회 내에서의 연속적이고 안정적인 일상을 영위하기 위한 필수 불가결한 사회적 안전망이다.<sup><a href="#fn-1">1</a></sup> 이러한 맥락에서 공공복지 전달체계를 담당하는 기초지방자치단체는 서비스 제공기관을 선정하고 평가함에 있어 고도의 투명성, 객관성, 그리고 장애인 당사자의 권리를 최우선으로 보장하는 절차적 정당성을 확보해야 할 무거운 책무를 지닌다.</p>
+
+    <p>그러나 최근 경기도 광명시에서 발생한 '2025년 발달장애인 방과후 활동서비스 제공기관 재지정 심사'와 관련된 일련의 논란은 이러한 공공복지 전달체계가 지닌 구조적 모순과 행정 권력의 자의적 행사 가능성, 그리고 지역사회 내 복지 정치학의 어두운 이면을 적나라하게 노출하고 있다. 해당 사안은 광명시 소재 <strong>'마음드림심리상담센터'</strong>가 2025년도 재지정 심사에서 유일하게 탈락하여, 해당 기관을 이용하던 <strong class="text-critical">6명의 중증 발달장애 청소년이 사실상 일방적인 퇴소 처리를 당할 위기</strong>에 처하면서 수면 위로 부상하였다.</p>
+
+    <div class="callout callout-critical">
+      <p>본 사안은 표면적으로는 단일 복지기관의 평가 탈락이라는 행정 처분에 불과해 보일 수 있으나, 그 이면을 심층적으로 들여다보면 단순한 행정 절차상의 불만을 넘어선 중대한 병리 현상들이 얽혀 있다. 공공서비스 평가에 있어서의 절차적 공정성 결여, 정보 비공개 처분을 통한 행정의 투명성 및 시민의 알 권리 훼손, 심사위원 구성 과정에서의 명백한 이해충돌(Conflict of Interest) 방조, 그리고 다가오는 지방선거를 둘러싼 특정 정치 세력 및 지역 카르텔의 부당한 개입 의혹 등 복합적인 쟁점들이 결합되어 있다.<sup><a href="#fn-2">2</a></sup></p>
+    </div>
+
+    <p>무엇보다도 가장 심각한 문제는, 중증 발달장애인 당사자의 환경적 안정성을 최우선으로 담보해야 할 공공 행정기관이 스스로 절차적 경직성과 불투명성에 매몰되어 오히려 돌봄의 치명적인 단절을 초래하고 있다는 사실이다.<sup><a href="#fn-3">3</a></sup></p>
+
+    <p>본 보고서는 광명시 발달장애인 방과후 활동서비스 재지정 심사 과정에서 발생한 제반 쟁점을 보건복지부의 공식 사업 지침, 공공기관의 정보공개에 관한 법률 및 행정법적 판례, 그리고 지역사회 복지 거버넌스의 관점에서 입체적이고 심층적으로 교차 분석한다. 수집된 제보 문건, 언론 보도, 의회 회의록, 그리고 정책 자료들을 종합화하여 이면의 인과관계를 추적함으로써, 지역 단위 사회복지서비스 제공기관 선정 체계의 근본적인 취약성을 진단하고 공공성과 투명성을 온전히 회복하기 위한 실효적인 제도적 대안을 도출하는 데 그 목적이 있다.</p>
+  </section>
+
+  <!-- CHAPTER 1 -->
+  <section id="chapter1" class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num-display" aria-hidden="true">01</div>
+      <div class="chapter-label">제1장</div>
+      <h2 class="chapter-title">정책적 배경 및 발달장애인 방과후 활동서비스 지정 제도의 이해</h2>
+    </div>
+
+    <p>사건의 본질을 파악하기 위해서는 먼저 논란의 대상이 된 제도의 법적, 행정적 기반을 명확히 이해할 필요가 있다. 청소년 발달장애인 방과후 활동서비스는 발달장애 학생이 방과후 시간 동안 지역사회 내에서 의미 있는 활동을 영위하며 안전한 돌봄을 받을 수 있도록 지원함으로써, 당사자의 자립 역량을 강화하고 가족의 과도한 돌봄 부담을 경감시키기 위해 설계된 국가 핵심 복지 사업이다.<sup><a href="#fn-4">4</a></sup></p>
+
+    <div id="chapter1-1" class="subsection">
+      <h3 class="subsection-title">보건복지부 지침에 따른 지정 및 평가 기준의 구조</h3>
+
+      <p>보건복지부의 '발달장애인 활동서비스 사업안내' 지침에 따르면, 방과후 활동 제공기관으로 지정받고자 하는 기관은 엄격한 시설 기준과 인력 기준을 충족해야 한다. 시설 기준으로는 이용자의 안전을 고려한 쾌적한 내외부 환경, 사무공간과 활동공간의 분리, 그리고 이용자 1명당 3.3제곱미터 이상의 필수 공간 확보 등이 요구된다.<sup><a href="#fn-1">1</a></sup> 또한, 인력 기준에 있어서는 사회복지사, 직업능력개발훈련교사, 임상심리사 등 관련 분야의 전문 자격을 갖추거나 장애인 직접 서비스 제공 경험이 1년 이상인 자를 의무적으로 배치해야 한다.<sup><a href="#fn-5">5</a></sup></p>
+
+      <p>제공기관을 지정하거나 재지정할 때, 기초지자체(특별자치시·특별자치도·시·군·구)는 5인 이상의 발달장애 관련 전문가, 지역발달장애인지원센터장, 공무원 등으로 구성된 '지정 심사위원회'를 별도로 구성하여 심사를 진행해야 한다.<sup><a href="#fn-5">5</a></sup> 이 위원회는 기관의 현황(물리적 접근성, 안전시설 등 30점), 사업수행 실적(5점), 인력 관련(전문성, 인력 유지 및 대체 확보 방안 등 25점), 그리고 서비스 질 관리 등의 지표를 종합적으로 고려하여 절대평가 방식으로 기관을 선정한다.<sup><a href="#fn-4">4</a></sup></p>
+
+      <div class="table-wrapper">
+        <span class="table-caption">표 1 — 발달장애인 방과후 활동서비스 제공기관 지정 평가 기준표</span>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:20%">평가 대분류</th>
+              <th style="width:25%">세부 평가 항목</th>
+              <th>주요 평가 내용 및 목적</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>기관 현황</td>
+              <td>접근성 및 시설 확보</td>
+              <td>물리적 접근성, 사무/교육 시설 설치 현황, 안전 시설 구비 여부 확인</td>
+            </tr>
+            <tr>
+              <td>사업수행 실적</td>
+              <td>과거 복지사업 실적</td>
+              <td>방과후활동 및 장애인 대상 복지사업 수행 경험과 성과 (신규 기관과 재지정 기관의 역량 차이 검증)</td>
+            </tr>
+            <tr>
+              <td>인력 관련</td>
+              <td>전문성 및 유지 관리</td>
+              <td>제공인력의 자격, 경력, 교육 이수 여부, 근로 조건 및 대체인력 확보 방안</td>
+            </tr>
+            <tr>
+              <td>서비스 질 관리</td>
+              <td>운영 계획의 적정성</td>
+              <td>이용자 서비스 평가 계획, 협력기관 연계 현황, 프로그램의 다양성 및 실효성 검증</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>광명시 역시 이러한 보건복지부의 기본 지침을 준용하여 2025년도 재지정 심사를 진행하였으며, 평가 결과 종합 점수 60점 이상을 획득한 기관을 선정하는 절대평가 방식을 채택하였다.<sup><a href="#fn-2">2</a></sup> 그러나 제도의 설계가 합리적이라 할지라도, 이를 일선 행정 현장에서 집행하는 이른바 '일선관료(Street-level Bureaucrats)'와 지역 위원회의 권한 행사가 자의적으로 이루어질 경우, 본래의 정책 목표는 심각하게 훼손될 수밖에 없다. 광명시의 사례는 바로 이 집행 과정에서의 재량권 남용과 평가 지표의 왜곡 적용이 어떠한 파국을 초래하는지를 보여준다.</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 2 -->
+  <section id="chapter2" class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num-display" aria-hidden="true">02</div>
+      <div class="chapter-label">제2장</div>
+      <h2 class="chapter-title">광명시 재지정 심사 과정의 절차적 흠결과 형식주의적 평가의 문제점</h2>
+    </div>
+
+    <p>광명시는 2025년 발달장애인 방과후 활동서비스 제공기관 지정을 위해 기존에 서비스를 제공하던 재지정 대상 기관 3곳과 신규 진입을 희망하는 3곳, 총 6개 기관을 대상으로 심사를 진행하였다.<sup><a href="#fn-2">2</a></sup> 심사 결과, 수년간 지역사회에서 발달장애 아동을 돌보며 다수의 협력 기관과 연계 프로그램을 운영해 온 마음드림심리상담센터 단 1곳만이 60점 미만이라는 이유로 탈락 통보를 받았다.</p>
+
+    <div id="chapter2-1" class="subsection">
+      <h3 class="subsection-title">행정 평가에 내재된 '목표의 대치(Goal Displacement)' 현상</h3>
+
+      <p>이 과정에서 드러난 가장 심각한 절차적 흠결은 평가 기준의 본질적 목적이 철저히 무시된 채, 지극히 지엽적이고 형식적인 요소가 당락을 결정짓는 절대적 잣대로 둔갑했다는 점이다. 센터 측이 시청에 이의를 제기하고 답변을 요구하는 과정에서 확인된 바에 따르면, 심사위원회가 해당 센터에 낮은 점수를 부여한 결정적인 사유 중 하나는 <strong class="text-critical">'센터 대표가 직접 PPT 발표를 하지 않고 이사가 대신 발표를 진행했다'</strong>는 것이었다. 시청과 심사위원회는 이를 근거로 해당 기관의 '사업 수행 능력 및 운영 의지가 부족하다'고 단정 지었다.<sup><a href="#fn-3">3</a></sup></p>
+
+      <div class="callout">
+        <p>이는 행정학적 관점에서 전형적이고도 치명적인 '목표의 대치' 현상이다. 보건복지부의 평가 지표가 진정으로 측정하고자 하는 바는 해당 기관이 체육, 음악, 미술, 외부 활동 등 다양한 협력 기관과 연계하여 중증 발달장애인에게 실효적이고 안정적인 교육 및 돌봄 프로그램을 제공할 수 있는 실질적인 역량이다.<sup><a href="#fn-3">3</a></sup></p>
+        <cite>— 행정학적 분석: 목표의 대치(Goal Displacement) 현상 진단</cite>
+      </div>
+
+      <p>마음드림심리상담센터는 이미 수년간 이러한 프로그램을 정상적으로 운영하며 10년 이상의 업력을 통해 그 실적을 증명해 온 기관이었다. 법인이나 센터의 내부 규정상 등기 이사나 실무 책임자가 사업 발표를 진행하는 것은 법적으로나 행정 절차상으로 아무런 하자가 없는 정당한 행위이다.<sup><a href="#fn-3">3</a></sup></p>
+
+      <p>그럼에도 불구하고 발표자의 직책이라는 외형적이고 의전적인 요소를 근거로 기관의 서비스 제공 역량 전체를 평가절하한 것은 심사위원회의 심각한 인지적 편향과 재량권의 일탈을 시사한다. 더욱이 학부모들의 제보에 따르면, 과거 사업 실적이 전무하여 실질적인 서비스 검증이 불가능한 신규 진입 센터들에게는 오히려 기본 점수를 후하게 부여하고 시작했다는 황당한 발언까지 심사장에서 나온 것으로 알려졌다.<sup><a href="#fn-2">2</a></sup> 이는 '60점 이상'이라는 절대평가의 외피를 두르고 있으나, 실질적으로는 사전에 탈락시킬 기관을 내정해 두고 그에 맞추어 주관적인 정성 평가 점수를 자의적으로 하향 조정한 이른바 <strong>'표적 심사'</strong>가 아니냐는 합리적인 의구심을 불러일으킨다.</p>
+    </div>
+
+    <div id="chapter2-2" class="subsection">
+      <h3 class="subsection-title">정보 비공개 처분의 모순과 행정 투명성의 실종</h3>
+
+      <p>형식주의적 평가로 촉발된 논란에 기름을 부은 것은 광명시 행정당국의 극단적이고 폐쇄적인 정보 비공개 행태이다. 사랑하는 자녀가 하루아침에 익숙한 돌봄 환경에서 쫓겨나야 하는 청천벽력 같은 상황에 직면한 학부모들과 센터 측은, 도대체 어떤 항목에서 점수가 부족했는지 구체적인 심사 점수표와 명확한 탈락 사유를 공개해 줄 것을 강력히 요구하였다.<sup><a href="#fn-2">2</a></sup> 그러나 광명시는 <strong>"구체적인 점수표나 사유는 심사위원들이 결정한 고유 권한이며, 비밀이고 비공개 원칙에 해당한다"</strong>는 기계적인 답변만을 반복하며 모든 정보 제공을 전면 거부하고 있다.</p>
+
+      <div class="highlight-box">
+        <div class="highlight-box-label">관련 법령 및 판례</div>
+        <p>2012년의 주요 판례(2012-5 광주)에 따르면, 사회복지기관 위수탁기관 선정 시 공정한 업무수행에 지장을 초래할 우려가 있는 심사위원별 개별 채점 결과 등은 예외적으로 비공개할 수 있으나, 공공기관의 업무를 위탁 수행한 심사위원 명단이나 법인의 정관 정보, 그리고 기관이 취득한 종합적인 평가 결과와 탈락의 합리적 근거 등은 마땅히 공개되어야 함을 명시하고 있다.<sup><a href="#fn-7">7</a></sup> 판례는 비공개 결정에 대해 매우 엄격하게 해석해야 함을 강조하며, 전면 비공개가 아닌 '부분 공개'를 통해 처분의 당사자가 자신의 권리를 구제받을 수 있는 방어권을 보장해야 한다고 판시한다.<sup><a href="#fn-7">7</a></sup></p>
+      </div>
+
+      <p>현재 해당 센터는 광명시의 처분에 불복하여 행정소송을 제기한 상태이며, 소송이 4개월째 진행 중인 상황이다. 더욱 충격적인 것은, 행정소송 과정에서 담당 재판부의 판사가 시 측에 정보 공개를 요청하였음에도 불구하고, 시 당국은 어떠한 조치도 취하지 않으며 사법부의 요청마저 묵살하는 듯한 태도를 보이고 있다는 점이다.<sup><a href="#fn-2">2</a></sup></p>
+
+      <div class="callout callout-critical">
+        <p>부모들은 "아이가 왜 더 이상 이곳에 다닐 수 없는지 그 이유라도 알아야 아이에게 상황을 설명하고 다독일 수 있다"고 절규하고 있으나, 굳게 닫힌 행정의 밀실은 이들의 절박한 호소를 철저히 외면하고 있다.</p>
+        <cite>— 행정소송 진행 중인 학부모들의 호소</cite>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER 3 -->
+  <section id="chapter3" class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num-display" aria-hidden="true">03</div>
+      <div class="chapter-label">제3장</div>
+      <h2 class="chapter-title">이해충돌 방지 기제의 완벽한 작동 실패와 지역 카르텔의 그림자</h2>
+    </div>
+
+    <p>본 사안이 단순한 평가상의 이견을 넘어 심각한 공익적 스캔들로 비화된 핵심 배경에는, 심사위원 구성 과정에서 발생한 노골적인 이해충돌(Conflict of Interest) 문제와 지역 정치권 및 특정 이익집단 간의 카르텔 의혹이 짙게 깔려 있다. 지역사회라는 한정된 공간에서 소규모 복지 사업을 심사할 때는 관계망의 밀집도가 높기 때문에, 공정성을 담보하기 위한 이해충돌 방지 장치가 그 어느 곳보다 철저하게 작동해야 한다.<sup><a href="#fn-8">8</a></sup> 그러나 광명시의 이번 심사에서는 이러한 기본적인 여과 장치가 완전히 무력화되었다.</p>
+
+    <div id="chapter3-1" class="subsection">
+      <h3 class="subsection-title">좁은 해석으로 일관한 이해충돌(Conflict of Interest)의 묵인</h3>
+
+      <p>학부모들과 센터 측의 제보에 따르면, 이번 심사에 참여한 심사위원 5명 중 1명은 광명 지역의 'ㅇㅇ장애인부모연대' 소속 지회장급 대표 인사였다.<sup><a href="#fn-2">2</a></sup> 문제는 이 심사위원의 자녀가 과거 마음드림심리상담센터를 이용한 이력이 있을 뿐만 아니라, 현재 이번 재지정 심사에 참여하여 경쟁 관계에 있는 다른 기관에 재학 중이라는 사실이다.<sup><a href="#fn-2">2</a></sup> 특정 기관의 당락이 경쟁 기관의 수요나 이익에 직간접적인 영향을 미칠 수 있는 구조적 환경에서, 경쟁 기관의 학부모이자 지역 내 막강한 영향력을 행사하는 이익단체 대표가 절대평가의 생사여탈권을 쥐는 심사위원으로 위촉된 것은 행정 절차상 중대한 하자에 해당한다.</p>
+
+      <p>이에 대해 광명시는 "논란이 된 심사위원의 자녀가 해당 기관의 '방과 후 활동'이 아닌 '다른 프로그램'을 이용 중이므로 법적인 제척 사유에 해당하지 않는다"는 궁색한 논리로 일관하며 이해충돌 논란을 일축하였다.</p>
+
+      <div class="table-wrapper">
+        <span class="table-caption">표 2 — 이해충돌 쟁점별 주요 입장 비교</span>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:24%">쟁점 사안</th>
+              <th>광명시 행정부의 해석 및 입장</th>
+              <th>센터, 학부모 및 일반적 행정 원칙의 시각</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>제척 사유 해당 여부</td>
+              <td>심사위원 자녀가 이용 중인 서비스는 '방과후 활동'이 아니므로 심사 대상 업무와 무관하여 합법적 위촉임.</td>
+              <td>동일 기관 내 타 프로그램을 이용하더라도 기관의 존립 및 운영 환경과 직결되므로 명백한 이해당사자임.<sup><a href="#fn-2">2</a></sup></td>
+            </tr>
+            <tr>
+              <td>사전 고지 의무</td>
+              <td>심사위원 위촉 절차에 무리가 없었음.</td>
+              <td>시 공무원조차 심사위원에게 사전에 이해관계 충돌에 대한 고지를 제대로 하지 않았음을 인정함.<sup><a href="#fn-2">2</a></sup></td>
+            </tr>
+            <tr>
+              <td>심사 현장의 중립성</td>
+              <td>위원들의 독립적이고 객관적인 평가 점수에 따랐음.</td>
+              <td>해당 위원이 심사 도중 본인 자녀가 예전에 다녔던 타 센터장을 찾으며 참석 여부를 묻는 등 영향력을 행사함.<sup><a href="#fn-2">2</a></sup></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>시의 이러한 해명은 보건복지부의 사업 지침과 일반적인 위원회 운영 원칙에 명시된 '이해관계인 배제(제척, 기피, 회피)' 규정의 근본 취지를 정면으로 위배하는 극단적으로 협소한 법리 해석이다.<sup><a href="#fn-8">8</a></sup> 이해충돌 방지의 원칙은 단지 직접적인 금전적 거래 관계만을 차단하는 것이 아니라, 학연, 지연, 과거의 관계, 소속 단체의 이념적 스탠스 등으로 인해 평가의 '객관성과 공정성을 해칠 우려가 있다는 합리적 의심'이 드는 모든 상황을 선제적으로 배제하는 데 있다.</p>
+    </div>
+
+    <div id="chapter3-2" class="subsection">
+      <h3 class="subsection-title">'그날의 분위기'와 정치적 보은 인사 등 지역 카르텔 의혹</h3>
+
+      <p>문서화된 채점표 너머에서 작동한 비공식적이고 정치적인 동학은 본 사안의 가장 어두운 단면이다. 제보 문건에 따르면, 심사 결과가 공식적으로 확정 및 발표되기도 전에, 심사위원으로 참여했던 시 공무원이 시청을 찾아간 부모님들에게 <strong>"드림(마음드림센터)은 안되겠죠?"</strong>라는 의미심장한 발언을 흘렸다.<sup><a href="#fn-2">2</a></sup></p>
+
+      <div class="callout callout-critical">
+        <p>부모들이 시 관계자와의 공식 면담에서 점수 미달의 명확한 이유를 따져 묻자, 돌아온 답변은 합리적인 평가 지표에 대한 설명이 아니라 <strong>"그날(심사 당일)의 분위기가..."</strong>라는 참담하고 비상식적인 변명이었다. 공공서비스 제공 기관의 생존과 6명 중증 장애 아동의 돌봄 권리가 객관적 데이터가 아닌 특정 위원들이 주도한 '심사장의 분위기'라는 정무적이고 주관적인 요소에 의해 난도질당했음을 시인한 것이나 다름없다.</p>
+        <cite>— 광명시 담당 공무원 발언 (학부모 제보 기록)</cite>
+      </div>
+
+      <p>이러한 비정상적인 행정 처리가 강행된 배경에는 다가오는 지방선거를 둘러싼 정치적 셈법이 개입되어 있다는 구체적인 소문이 학부모들 사이에서 파다하게 퍼져 있다.<sup><a href="#fn-2">2</a></sup> 구체적으로, 심사를 주도한 것으로 지목되는 장애인부모연대 관계자(심사위원)가 이번 심사에서 특정 기관(마음드림)을 탈락시키는 등 입김을 행사하는 대가로, 향후 지방선거 시 해당 지역구에서 특정 정당의 시의원 공천을 약속받았다는 충격적인 의혹이다.<sup><a href="#fn-2">2</a></sup></p>
+
+      <p>또 다른 제보 내용은 이러한 카르텔적 의사결정 구조의 신빙성을 더욱 강화한다. 타 복지 기관의 대표가 해당 지역 국회의원과의 독대를 진행했고, 그 국회의원이 시장에게 직접 연락을 취한 결과, 무려 30년 만에 시장의 특별 조치로 이례적인 재지정이라는 놀라운 성과를 이루어낸 사례가 공공연히 거론되고 있다.<sup><a href="#fn-2">2</a></sup> 즉, 지역 내 복지 기관의 생존은 서비스의 질이나 아동에 대한 헌신도가 아니라, 시장, 국회의원, 그리고 권력화된 부모 단체와의 <strong>'네트워킹 능력'</strong>에 의해 좌우된다는 비참한 현실을 보여주는 대목이다.<sup><a href="#fn-2">2</a></sup></p>
+
+      <p>반면, 권력의 비호를 받지 못한 마음드림센터의 학부모들이 광명시를 지역구로 둔 국회 보건복지위원회 소속 김남희 의원이나 다른 시의원들에게 절박하게 면담과 도움을 요청하였으나, 이들은 만남조차 거부하거나 "눈물로 호소하라"는 무책임하고 모욕적인 답변만을 돌려주었다.<sup><a href="#fn-2">2</a></sup> 불과 며칠 전 (사)전국장애인부모연대와는 간담회를 열고 발달장애인 지원 확대를 논의하면서도, 정작 부당한 행정 폭력에 희생된 당해 지역구 학부모들의 목소리에는 철저히 귀를 닫은 행태는, 지역 정치인들이 철저히 표 계산과 이익단체의 로비력에 따라 움직이고 있음을 여실히 드러낸다.<sup><a href="#fn-2">2</a></sup></p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 4 -->
+  <section id="chapter4" class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num-display" aria-hidden="true">04</div>
+      <div class="chapter-label">제4장</div>
+      <h2 class="chapter-title">서비스 단절이 발달장애인 당사자와 가족 삶에 미치는 파괴적 파급 효과</h2>
+    </div>
+
+    <p>이번 광명시의 부당한 재지정 심사 탈락 사태가 일반적인 행정 소송이나 민원 처리 과정과 궤를 달리하며 긴급한 사회적 의제로 다루어져야 하는 가장 본질적인 이유는, 이 행정 처분의 직접적인 피해자가 스스로 목소리를 내어 권리를 방어할 수 없는 <strong class="text-critical">'중증 발달장애 청소년 6명'</strong>이기 때문이다. 행정당국은 "우리는 안내문을 발송했고, 아이들이 다른 기관으로 옮겨 서비스를 계속 이용할 수 있도록 행정적 절차를 마쳤다"는 기계적이고 무책임한 항변으로 일관하고 있으나, 이는 발달장애의 임상적 특성과 중증 장애인 돌봄 현장의 처절한 현실을 철저히 무시한 전형적인 탁상행정이다.<sup><a href="#fn-3">3</a></sup></p>
+
+    <div class="subsection">
+      <h3 class="subsection-title">중증 발달장애인의 환경 적응권 박탈과 발달 퇴행의 위기</h3>
+
+      <p>자폐 스펙트럼 장애(ASD)와 지적 장애를 포함한 중증 발달장애인에게 있어 '동일성 유지(Maintenance of Sameness)'와 예측 가능한 환경의 일관성은 단순한 선호의 문제를 넘어 정서적 안정과 일상생활 영위를 위한 절대적인 전제 조건이다.<sup><a href="#fn-3">3</a></sup> 심리학 및 특수교육학적 관점에서, 이들은 환경이나 교사, 심지어 이동하는 동선이 미세하게 바뀌는 것만으로도 극도의 불안과 공포를 느끼며, 새로운 기관에 적응하여 라포(Rapport)를 형성하는 데에는 비장애인과는 비교할 수 없는 엄청난 시간(통상 <strong>6개월에서 1년 이상</strong>)과 에너지가 소요된다.<sup><a href="#fn-3">3</a></sup></p>
+
+      <p>특히 이번에 마음드림심리상담센터에서 돌봄을 받다가 강제 퇴소 위기에 처한 6명의 청소년 중 대다수는 안타깝게도 과거 다른 복지 기관이나 센터에서 중증 장애로 인한 행동 특성(도전적 행동 등)을 감당하지 못한다는 이유로 적응에 실패하거나 입소 자체를 거부당하고 쫓겨난 쓰라린 상처를 가진 아이들이다.</p>
+
+      <div class="callout callout-critical">
+        <p>어렵게 이곳 센터에 정착하여 교사들의 헌신적인 돌봄 아래 간신히 안정적인 일상을 유지하고 사회성을 기르던 아이들에게, 또다시 "이제 너는 이곳에 올 수 없다"는 갑작스러운 통보를 내리는 것은 아이들의 마음에 씻을 수 없는 심리적 트라우마를 각인시키는 폭력이다. 익숙하고 안전하다고 믿었던 돌봄 환경의 붕괴는 아이들에게 단순한 우울감을 넘어 극심한 불안 장애, 자해 및 타해 행동의 발현, 섭식 거부, 그리고 그간 쌓아온 발달 성과의 급격한 퇴행(Regression) 등 치명적인 임상적 위기로 직결된다.</p>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">발달장애인 가족의 생계 파탄과 경기도 '동행 돌봄' 정책의 모순</h3>
+
+      <p>이러한 행정의 폭력은 당사자를 넘어 그 가족 전체의 삶을 벼랑 끝으로 내몬다. 방과후 활동서비스는 단순히 아이들의 시간을 때우는 기능이 아니라, 가족 구성원(주로 어머니)이 사회경제적 활동을 유지할 수 있도록 숨통을 틔워주는 <strong>최소한의 산소호흡기</strong>이다. 당장 아이가 다닐 기관이 사라지고 타 기관으로의 연계마저 불투명해지면, 부모 중 한 명은 즉각 생업을 포기하고 아이의 24시간 돌봄을 전담해야만 한다. 이는 맞벌이 가정의 소득 절벽을 초래하며, 영세 자영업을 하는 부모들에게는 가계 경제의 완벽한 파탄을 의미한다.</p>
+
+      <div class="table-wrapper">
+        <span class="table-caption">표 3 — 파급 영역별 피해 양상 및 행정 대응 현황</span>
+        <table>
+          <thead>
+            <tr>
+              <th style="width:20%">파급 영역</th>
+              <th>세부 피해 양상 및 심각성</th>
+              <th>행정 당국의 대응 태도</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>당사자 (발달장애인)</td>
+              <td>심리적 트라우마, 환경 변화로 인한 불안 증가, 자해/퇴행 행동 발현 위험</td>
+              <td>타 기관 이관 안내문 발송으로 행정책임 종료 주장</td>
+            </tr>
+            <tr>
+              <td>가족 (보호자)</td>
+              <td>사회경제적 단절, 생업 포기 강요에 따른 가계 빈곤화, 극심한 심리적 소진</td>
+              <td>"소송 결과 대기" 외에 별다른 돌봄 공백 지원책 전무<sup><a href="#fn-3">3</a></sup></td>
+            </tr>
+            <tr>
+              <td>지역사회 거버넌스</td>
+              <td>공공행정에 대한 불신 팽배, 민간 복지기관의 소극적 운영 초래, 사회적 비용(행정소송) 낭비<sup><a href="#fn-3">3</a></sup></td>
+              <td>비밀주의 고수, 지방의회 및 감사 기구의 방관<sup><a href="#fn-2">2</a></sup></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>최근 경기도 내에서는 발달장애 남매를 둔 시한부 어머니의 호소, 20대 장애인 자녀와 함께 극단적 선택을 한 아버지의 비극 등 발달장애인 가족의 참사가 끊이지 않고 발생하고 있다.<sup><a href="#fn-10">10</a></sup> 이에 김동연 경기도지사는 분향소를 찾아 눈물을 흘리며 발달장애인 가족의 돌봄 부담 경감과 지역사회 자립 지원을 핵심으로 하는 '발달장애인 동행 돌봄 체계' 구축을 최우선 정책으로 추진하겠다고 공언한 바 있다.<sup><a href="#fn-10">10</a></sup></p>
+
+      <p>그러나 정작 정책이 구현되어야 할 기초지자체인 광명시의 현장에서는 도지사의 거창한 약속이 무색하게, 기존에 아이들을 묵묵히 껴안아 오던 훌륭한 민간의 돌봄망마저 불투명하고 억압적인 행정 폭력으로 산산조각 내는 모순적이고 비극적인 역주행이 벌어지고 있다. 광명시는 다른 곳으로 옮기라고 안내할 뿐, 지역 내 타 기관들이 이 중증 장애 아동 6명을 즉각적으로 수용할 수 있도록 정원을 임시로 늘려주거나, 긴급 인력을 추가로 파견하는 등의 실질적인 연계 대책(Transition Plan)은 전혀 마련하지 않았다. 이는 행정의 무능과 나태를 넘어 헌법이 규정한 국가의 약자 보호 의무를 철저히 방기한 행위이다.</p>
+    </div>
+  </section>
+
+  <!-- CHAPTER 5 -->
+  <section id="chapter5" class="chapter">
+    <div class="chapter-header">
+      <div class="chapter-num-display" aria-hidden="true">05</div>
+      <div class="chapter-label">제5장</div>
+      <h2 class="chapter-title">지자체 단위 복지행정 시스템의 구조적 취약성과 권력 남용 실태</h2>
+    </div>
+
+    <p>이번 광명시 마음드림심리상담센터 사태는 단일 지자체 공무원들의 단순한 일탈을 넘어, 대한민국의 '지방분권화된 사회복지 서비스 전달체계'가 내포하고 있는 근본적인 시스템적 취약성과 그 안에서 배태되는 권력 남용의 실태를 적나라하게 고발하고 있다. 보건복지부의 가이드라인은 위원회 구성과 평가 항목의 거시적 틀만을 제시할 뿐, 그 운영과 집행, 그리고 최종 결정권은 전적으로 기초지자체장(시장, 군수, 구청장)의 권한으로 위임되어 있다.<sup><a href="#fn-1">1</a></sup> 이러한 분권화는 지역의 고유한 특성과 수요를 탄력적으로 반영할 수 있다는 이론적 장점을 지니지만, 지역 내 투명한 감시 및 견제 시스템이 부재할 경우 최악의 '관치 복지'로 전락하게 된다.</p>
+
+    <div class="subsection">
+      <h3 class="subsection-title">시의회 견제 기능의 상실과 불법적 회유 시도</h3>
+
+      <p>지방자치제도하에서 집행부(시청)의 행정 폭주를 견제하고 시민의 권익을 보호해야 할 최후의 보루는 시의회이다. 현재 광명시의회는 2026년 2월을 기점으로 복지문화건설위원회 등 다수의 상임위원회를 개최하며 활발한 활동을 벌이고 있는 것으로 나타난다.<sup><a href="#fn-14">14</a></sup> 그러나 센터 부모님들이 지푸라기라도 잡는 심정으로 국회의원을 비롯해 다수의 시의원들을 찾아가 억울함을 호소하고 진상 조사를 요청하였음에도, 돌아온 답변은 <strong>"시의원조차 행정부의 심사 서류를 열람할 수 없다"</strong>는 기막힌 무기력이었다.<sup><a href="#fn-2">2</a></sup></p>
+
+      <div class="highlight-box">
+        <div class="highlight-box-label">구조적 문제 진단</div>
+        <p>국가 안보와 직결된 대통령의 비밀 기록물도 아닌 일개 방과후 서비스 평가 채점표를 시의원이 볼 수 없다는 것은 상식적으로 납득하기 어려우며, 이는 의회가 집행부에 대한 행정사무감사 권한을 스스로 포기했거나 특정 권력의 눈치를 보며 직무를 유기하고 있다는 명백한 증거다.<sup><a href="#fn-2">2</a></sup></p>
+      </div>
+
+      <p>더욱 충격적인 사실은 소송이 진행 중인 와중에 집행부의 행위이다. 제보에 따르면, 사태가 커지자 광명시 사회복지과 국장이 직접 현재 행정 소송을 진행 중인 마음드림센터를 방문하여 은밀한 설득과 회유를 시도하였다.<sup><a href="#fn-2">2</a></sup> 당시 시 담당자는 부모님들에게 "문책을 받을 각오로 감사과에 제출할 보완 자료를 요구하겠다. 그 자료를 다시 사용하여 재지정에 올리라"고 제안했다. 센터 측이 도대체 무엇을 잘못했는지 지적해 주어야 수정할 수 있다고 항변하자, 결국 국장은 "감사과에 자료를 제출하는 것은 곧 징계를 받는 것"이라며 말을 바꾸었다.<sup><a href="#fn-2">2</a></sup></p>
+
+      <div class="callout callout-critical">
+        <p>겉으로는 문제 해결을 돕는 척하면서 실제로는 센터를 시 자체 감사에 넘겨 행정 처분과 징계의 덫에 빠뜨리려 했다는 의혹이다. 감사과에 자문만 받았다는 시의 변명과 달리, 이는 돌봄의 절박한 위기에 처한 학부모들을 담보로 삼아 행정기관이 민간 센터를 통제하고 길들이려는 악의적인 권력 남용의 전형적인 수법이다.<sup><a href="#fn-2">2</a></sup></p>
+      </div>
+    </div>
+
+    <div class="subsection">
+      <h3 class="subsection-title">'강제 퇴출'에 대비한 연착륙(Soft-landing) 안전망의 부재</h3>
+
+      <p>구조적인 측면에서 보건복지부의 제도 설계 자체에도 심각한 맹점이 존재한다. 지침 상에는 기관이 자발적으로 휴업이나 폐업을 할 경우 이용자에 대한 조치 계획서를 사전에 제출하도록 명시하고 있으나<sup><a href="#fn-1">1</a></sup>, 본 사건처럼 지자체의 절대평가 심사 미달로 행정청에 의해 일방적으로 재지정이 '취소' 및 '강제 탈락' 조치될 경우, 그 기관을 이용하던 장애인들을 안전하게 타 기관으로 인계하고 적응을 돕는 이른바 '전원 프로토콜(Transfer Protocol)'이나 유예 기간에 대한 규정은 턱없이 부실하다.</p>
+
+      <p>평가 점수 60점을 넘지 못했다는 기계적인 이유로 당장 다음 달부터 문을 닫으라고 명령하는 것은, 그 안에 담긴 아이들의 삶과 발달의 연속성을 헌신짝처럼 내다 버리는 행위이다. 지자체가 강제로 기관을 퇴출시켰다면, 그에 따르는 공백과 혼란을 책임질 공공의 비상 돌봄 대책이 의무적으로 선행되어야 함에도 불구하고 현행 제도는 그 책임을 고스란히 영세한 민간 센터와 힘없는 부모들의 각자도생으로 전가하고 있다.</p>
+    </div>
+  </section>
+
+  <!-- CONCLUSION -->
+  <section id="conclusion" class="conclusion-section">
+    <div class="chapter-divider">
+      <div class="chapter-divider-icon"></div>
+    </div>
+
+    <div class="chapter-header">
+      <div class="chapter-label">결론 및 제언</div>
+      <h2 class="chapter-title">결론 및 실효적 제도 개선 방안</h2>
+    </div>
+
+    <div class="conclusion-intro">
+      광명시 발달장애인 방과후 활동서비스 재지정 심사 논란은 단순한 불공정 시비를 넘어, <strong>'그날의 분위기'</strong>라는 폭력적이고 자의적인 행정 언어가 힘없고 말 못 하는 발달장애 청소년들의 일상과 가족의 삶을 어떻게 무참히 유린할 수 있는지를 뼈아프게 보여주는 중대한 사례이다. 공공복지서비스 제공 기관의 지정 및 선정은 단순한 행정적 인허가 행위나 정치적 보은의 수단이 되어서는 안 된다. 그것은 국가가 헌법상 부여받은 취약계층의 생존권 보장 의무를 민간의 전문성과 결합하여 실현하는 가장 엄중하고 신성한 사회적 계약이다.
+    </div>
+
+    <div class="proposals-label">4대 핵심 제도 개선 방안</div>
+
+    <div class="proposals-grid">
+      <div class="proposal-card">
+        <div class="proposal-num">01</div>
+        <div class="proposal-title">복지서비스 평가 결과의 정보 공개 의무화 및 블라인드 심사 제도의 전면 도입</div>
+        <div class="proposal-body">
+          국세청이나 조달청의 평가 시스템에 준하는 수준으로, 지자체의 복지 서비스 제공기관 선정 과정에서의 심사위원별 세부 점수표와 정성 평가 사유서 공개를 정보공개법의 예외 없는 의무 조항으로 명문화해야 한다. 지역 내 좁은 인간관계로 인한 정실 개입을 차단하기 위해, 심사위원회 구성 시 타 지역 풀(Pool)의 외부 전문가를 의무적으로 50% 이상 배정하는 교차 심사제 또는 블라인드 평가 제도를 보건복지부 강제 지침으로 도입해야 한다.
+        </div>
+      </div>
+
+      <div class="proposal-card">
+        <div class="proposal-num">02</div>
+        <div class="proposal-title">심사위원 이해충돌 제척 사유의 엄격한 확대 적용 및 사전 검증 의무화</div>
+        <div class="proposal-body">
+          단순히 위원 본인이나 직계 가족이 '해당 평가 대상 기관'을 이용하고 있는가라는 1차원적인 기준을 넘어, 동일 생활 권역 내에서 경쟁 관계에 있는 타 기관의 임직원, 타 기관 이용자의 학부모, 직간접적 이익을 공유하는 정치적 목적의 이익단체 핵심 임원진은 심사위원에서 원천적으로 배제하도록 '복지평가 이해관계 회피 가이드라인'을 촘촘하게 재설계해야 한다. 사후 위반 사실 적발 시 엄중한 형사적, 행정적 페널티를 부과해야 한다.
+        </div>
+      </div>
+
+      <div class="proposal-card">
+        <div class="proposal-num">03</div>
+        <div class="proposal-title">중증 장애인 서비스 기관 강제 퇴출 시 '연착륙 유예 기간' 보장 제도의 신설</div>
+        <div class="proposal-body">
+          절대평가 미달 등 행정적 사유로 기존 기관의 재지정이 취소되더라도, 당장 오갈 곳이 없으며 적응에 극도의 어려움을 겪는 중증 발달장애인들의 충격을 최소화하기 위한 법적 안전장치가 필요하다. 최소 6개월에서 1년의 유예기간을 부여하여 기존의 돌봄 관계를 서서히 마무리할 수 있도록 지원하거나, 지자체가 전적으로 책임지고 동일한 수준의 돌봄 인력을 대체 기관에 파견하는 '돌봄 연속성 보장 특별 조치'를 보건복지부 지침에 필수로 반영해야 한다.
+        </div>
+      </div>
+
+      <div class="proposal-card">
+        <div class="proposal-num">04</div>
+        <div class="proposal-title">광명시 사태에 대한 상급 기관의 독립적인 외부 감사 및 철저한 진상 규명</div>
+        <div class="proposal-body">
+          현재 광명시 내부의 사회복지과나 감사실 차원의 사건 무마 시도나 징계 협박으로는 결코 진실을 밝힐 수 없다. 경기도청 감사관실, 국민권익위원회, 혹은 감사원 차원에서의 강력한 직권 조사가 즉각적으로 이루어져야 한다. '그날의 분위기'를 주도한 인물의 실체, 악의적 감점의 실질적 배경, 정보공개법 위반의 위법성, 그리고 지방선거 시의원 공천 거래를 둘러싼 카르텔 의혹에 대해 사법적 잣대까지 동원하여 낱낱이 밝혀내야 한다.
+        </div>
+      </div>
+    </div>
+
+    <div class="closing-statement">
+      <p>발달장애인 당사자와 그 가족들에게 국가는 결코 서류 속의 거창한 슬로건이나 법전 속의 문장으로 존재하지 않는다. 그들에게 국가란, 매일 아침 안심하고 아이를 맡긴 뒤 지친 몸을 이끌고 생업에 나설 수 있게 해주는 <strong style="color:#ffffff">'동네의 작은 방과후 센터'</strong>의 형태로 존재한다. 그 소중한 생존의 터전을 특정 세력의 정치적 셈법과 경직되고 불투명한 탁상행정으로 지워버리는 것은, 곧 국가의 존재 이유를 스스로 부정하는 참극이다. 광명시 사태가 우리 사회에 던진 이 뼈아픈 교훈을 바탕으로, 지역사회 복지 평가 시스템 전체의 뼈를 깎는 성찰과 전면적인 쇄신이 그 어느 때보다 시급하다.</p>
+    </div>
+  </section>
+
+  <!-- FOOTNOTES -->
+  <section id="footnotes" class="footnotes" aria-label="주석">
+    <div class="footnotes-title">주석 및 참고</div>
+    <p id="fn-1"><sup><a href="#fn-1">1</a></sup> 보건복지부, 『발달장애인 활동서비스 사업안내』, 해당 연도판. 시설 기준, 인력 기준, 재지정 절차 관련 지침 전반 참조. <a href="http://www.socialservice.or.kr/upload/etc/2025_BDG001.pdf" target="_blank" rel="noopener">[2025년 사업안내 원문]</a></p>
+    <p id="fn-2"><sup><a href="#fn-2">2</a></sup> 마음드림심리상담센터 학부모 및 센터 측 제보 문건, 광명시 행정 면담 기록, 관계자 발언 기록 (2025년). <a href="https://news.skbroadband.com/news/articleView.html?idxno=211703" target="_blank" rel="noopener">[관련 보도]</a></p>
+    <p id="fn-3"><sup><a href="#fn-3">3</a></sup> 센터 관계자 진술 및 담당 공무원 답변 기록. 발달장애 임상적 특성 관련 특수교육학 문헌 교차 참조.</p>
+    <p id="fn-4"><sup><a href="#fn-4">4</a></sup> 발달장애인 권리보장 및 지원에 관한 법률 (발달장애인법), 방과후 활동서비스 근거 조항 참조. <a href="https://www.mohw.go.kr/board.es?mid=a10503010100&amp;bid=0027&amp;act=view&amp;list_no=374523&amp;tag=&amp;nPage=1" target="_blank" rel="noopener">[보건복지부 공지]</a></p>
+    <p id="fn-5"><sup><a href="#fn-5">5</a></sup> 보건복지부 사업안내, 지정 심사위원회 구성 요건 및 인력 기준 관련 조항. <a href="http://www.socialservice.or.kr/upload/etc/2025_BDG001.pdf" target="_blank" rel="noopener">[2025년 사업안내 원문]</a></p>
+    <p id="fn-7"><sup><a href="#fn-7">7</a></sup> 행정법원 판례 2012-5 광주, 공공기관의 정보공개에 관한 법률 제9조 비공개 대상 정보의 해석 원칙. <a href="https://www.mpva.go.kr/mpva/downloadBbsFile.do?atchmnflNo=37664" target="_blank" rel="noopener">[정보공개 판례집]</a></p>
+    <p id="fn-8"><sup><a href="#fn-8">8</a></sup> 공공기관의 이해충돌방지법 (2022년 시행), 보건복지부 사업안내 위원회 운영 원칙 중 제척·기피·회피 규정. <a href="http://www.socialservice.or.kr/upload/etc/2025_BDG001.pdf" target="_blank" rel="noopener">[사업안내 원문]</a></p>
+    <p id="fn-10"><sup><a href="#fn-10">10</a></sup> 경기도 발달장애인 관련 언론 보도 및 김동연 경기도지사 '동행 돌봄' 정책 발표 내용. <a href="https://theindigo.co.kr/archives/46044" target="_blank" rel="noopener">[더인디고 보도]</a></p>
+    <p id="fn-11"><sup><a href="#fn-11">11</a></sup> 김남희 의원실 SNS 게시물 및 관련 언론 보도 (2025년 2월 19일 전후). <a href="http://www.koreadisablednews.com/news/articleView.html?idxno=28725" target="_blank" rel="noopener">[장애인신문]</a> <a href="http://www.thegmpost.com/news/articleView.html?idxno=23430" target="_blank" rel="noopener">[광명포스트]</a> <a href="https://www.barrierfreenews.com/news/articleView.html?idxno=32840" target="_blank" rel="noopener">[배리어프리뉴스]</a></p>
+    <p id="fn-14"><sup><a href="#fn-14">14</a></sup> 광명시의회 복지문화건설위원회 회의 일정 및 공개 자료 (2026년 2월 기준). <a href="https://council.gm.go.kr/" target="_blank" rel="noopener">[광명시의회]</a> <a href="https://council.gm.go.kr/kr/minutes/angun.do" target="_blank" rel="noopener">[회의록 검색]</a></p>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <p>본 보고서는 공공복지행정의 투명성과 발달장애인의 권리 보호를 위해 작성된 정책 분석 문서입니다.</p>
+  <p style="margin-top:0.5rem; font-size:0.68rem; letter-spacing:0.06em;">광명시 마음드림심리상담센터 &nbsp;|&nbsp; 2026</p>
+</footer>
+
+<!-- =============================================
+     JAVASCRIPT: READING PROGRESS BAR
+     ============================================= -->
+<script>
+(function() {
+  'use strict';
+  var bar = document.getElementById('progress-bar');
+  if (!bar) return;
+
+  function updateProgress() {
+    var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = Math.min(pct, 100) + '%';
+  }
+
+  window.addEventListener('scroll', updateProgress, { passive: true });
+  updateProgress();
+})();
+</script>
+
+</body>
+</html>
